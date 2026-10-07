@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var model = CallViewModel()
+    let model: CallViewModel
     
     var body: some View {
         VStack(spacing: 24) {
@@ -34,17 +34,6 @@ struct ContentView: View {
                 }
             }
             
-            Button("Test Token") {
-                Task {
-                    do {
-                        let token = try await ServerTokenProvider(baseURL: AppConfig.serverURL).fetchToken()
-                        print("GOT TOKEN: \(token)")
-                    } catch {
-                        print("TOKEN FAILED:", error.localizedDescription)
-                    }
-                }
-            }
-            
             if model.phase.isLive {
                 Button("End", systemImage: "phone.down.fill", role: .destructive) {
                     model.stop()
@@ -65,5 +54,11 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(
+        model: CallViewModel(
+            service: OAIRealtimeService(
+                tokenProvider: ServerTokenProvider(baseURL: AppConfig.serverURL)
+            )
+        )
+    )
 }

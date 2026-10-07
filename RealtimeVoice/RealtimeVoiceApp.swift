@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct RealtimeVoiceApp: App {
+    @State private var model = CallViewModel(
+        service: OAIRealtimeService(
+            tokenProvider: ServerTokenProvider(baseURL: AppConfig.serverURL)
+        )
+    )
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(
+                model: CallViewModel(
+                    service: OAIRealtimeService(
+                        tokenProvider: ServerTokenProvider(baseURL: AppConfig.serverURL)
+                    )
+                )
+            )
         }
     }
 }

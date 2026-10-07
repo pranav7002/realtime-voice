@@ -14,7 +14,13 @@ final class CallViewModel {
     private(set) var phase: Phase = .idle
     private(set) var messages: [Message] = []
     
+    private var service: any RealtimeService
     private var callTask: Task<Void, Never>?
+    private var assistantMessageID: UUID?
+    
+    init(service: any RealtimeService) {
+        self.service = service
+    }
     
     func start() {
         guard phase == .idle || isFailed else {
@@ -22,16 +28,23 @@ final class CallViewModel {
         }
         
         messages = []
+        assistantMessageID = nil
+        phase = .connecting
         
         callTask = Task {
-            await runFakeCall()
+            await runCall()
         }
     }
     
     func stop() {
         callTask?.cancel()
         callTask = nil
+        service.disconnect()
         phase = .idle
+    }
+    
+    func interrupt() {
+        service.interrupt()
     }
     
     private var isFailed: Bool {
@@ -39,32 +52,87 @@ final class CallViewModel {
         return false
     }
     
-    private func runFakeCall() async {
-        phase = .connecting
+    private func runCall() async {
         do {
-            try await Task.sleep(for: .seconds(1))
+            let events = try await service.connect()
             
-            phase = .listening
-            try await Task.sleep(for: .seconds(2))
-            
-            phase = .userSpeaking
-            try await Task.sleep(for: .seconds(2))
-            messages.append(Message(role: .user, text: "What's the weather like today?"))
-            
-            phase = .assistantSpeaking
-            messages.append(Message(role: .assistant, text: ""))
-            let reply = "It looks sunny today with a light breeze and a high of twenty four degrees."
-            
-            for word in reply.split(separator: " ") {
-                try await Task.sleep(for: .milliseconds(150))
-                let lastIndex = messages.count - 1
-                messages[lastIndex].text += " \(word)"
+            for await event in events {
+                guard !Task.isCancelled else { break }
+                handle(event)
             }
             
-            phase = .listening
+            // When the connnection closed but the UI does not know
+            // Handles the race bw stop() and the call itself
+            if !Task.isCancelled && phase.isLive {
+                phase = .idle
+            }
             
         } catch {
-            // Cancelled by stop(), stop() already resets phase, nothing to do here
+            
+            // When cancelling while connecting, a cancelled error is thrown, stop handels this so we return wo doing anything
+            guard !Task.isCancelled else { return }
+            phase = .failed(error.localizedDescription)
+        }
+    }
+    
+    private func handle(_ event: RealtimeEvent) {
+        switch event {
+        case .connected:
+            phase = .listening
+            
+        case .userStartedSpeaking:
+            phase = .userSpeaking
+            
+        case .userStoppedSpeaking:
+            phase = .listening
+            
+        case .userTranscript(let text):
+            addUserMessage(text)
+            
+        case .assistantStarted:
+            phase = .assistantSpeaking
+            
+        case .assistantDelta(let text):
+            appendAssistantText(text)
+            
+        case .assistantDone:
+            assistantMessageID = nil
+            phase = .idle
+            
+        case .assistantInterrupted:
+            appendAssistantText("...")
+            assistantMessageID = nil
+            phase = .listening
+            
+        case .failed(let error):
+            phase = .failed(error)
+        }
+    }
+    
+    private func addUserMessage(_ text: String) {
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+
+        let message = Message(role: .user, text: trimmed)
+
+        // The user's transcript often arrives after the assistant has started replying.
+        // Put it above the reply so the chat reads in the right order.
+        if let id = assistantMessageID, let index = messages.firstIndex(where: { $0.id == id }) {
+            messages.insert(message, at: index)
+        } else {
+            messages.append(message)
+        }
+    }
+
+    private func appendAssistantText(_ text: String) {
+        if let id = assistantMessageID,
+           let index = messages.firstIndex(where: { $0.id == id }) {
+            messages[index].text += text
+        } else {
+            // First words of a new reply: create its bubble.
+            let message = Message(role: .assistant, text: text)
+            messages.append(message)
+            assistantMessageID = message.id
         }
     }
 }
