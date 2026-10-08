@@ -37,7 +37,9 @@ There is no test target yet. If a change needs tests, add a `RealtimeVoiceTests`
 When the developer asks for the `explorer`, `planner` or `reviewer` agent:
 
 - Pass the agent the developer's problem plus an explicit task line: "Task: investigate and return a briefing only, do not edit files" (explorer), "Task: return a plan only, do not edit files" (planner), or "Task: review the current diff and report only, do not edit files" (reviewer).
-- Show the developer the agent's full output, not a summary.
+- Show the developer the agent's full output exactly as written, including its diagrams and tables, not a summary.
+- When calling the reviewer, include the developer's requirements for the change (from the conversation), so it can check that the change does what was asked, not just that it follows the rules.
+- When calling the planner, include the developer's requirements and any decisions they've already made.
 - **Then stop and wait.** Don't implement, fix, or start the next step until the developer explicitly says so ("build step 1", "fix the blockers"). A request like "use the explorer agent: add a mute button" means *investigate* adding a mute button, not build it.
 
 ## How to work in this repo
