@@ -95,6 +95,12 @@ final class OAIRealtimeService: NSObject, RealtimeService {
     private static let constraints = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil)
 
     private func configureAudioSession() throws {
+        // WebRTC re-applies its own default audio settings when the call starts,
+        // which would switch back to the quiet earpiece. Change its defaults too.
+        let webRTCConfig = RTCAudioSessionConfiguration.webRTC()
+        webRTCConfig.categoryOptions = [.defaultToSpeaker, .allowBluetoothHFP]
+        RTCAudioSessionConfiguration.setWebRTC(webRTCConfig)
+
         let session = RTCAudioSession.sharedInstance()
         session.lockForConfiguration()
         defer { session.unlockForConfiguration() }
