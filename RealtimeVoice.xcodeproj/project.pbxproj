@@ -271,7 +271,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RealtimeVoice/Info.plist;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "libsystem_kernel.dylib`__abort_with_payload:\n    0x101014b0c <+0>:  mov    x16, #0x209               ; =521 \n    0x101014b10 <+4>:  svc    #0x80\n->  0x101014b14 <+8>:  b.lo   0x101014b30               ; <+36>\n    0x101014b18 <+12>: stp    x29, x30, [sp, #-0x10]!\n    0x101014b1c <+16>: mov    x29, sp\n    0x101014b20 <+20>: bl     0x1010094dc               ; cerror_nocancel\n    0x101014b24 <+24>: mov    sp, x29\n    0x101014b28 <+28>: ldp    x29, x30, [sp], #0x10\n    0x101014b2c <+32>: ret    \n    0x101014b30 <+36>: ret    \nlibsystem_kernel.dylib`__abort_with_payload:\n    0x101014b0c <+0>:  mov    x16, #0x209               ; =521 \n    0x101014b10 <+4>:  svc    #0x80\n->  0x101014b14 <+8>:  b.lo   0x101014b30               ; <+36>\n    0x101014b18 <+12>: stp    x29, x30, [sp, #-0x10]!\n    0x101014b1c <+16>: mov    x29, sp\n    0x101014b20 <+20>: bl     0x1010094dc               ; cerror_nocancel\n    0x101014b24 <+24>: mov    sp, x29\n    0x101014b28 <+28>: ldp    x29, x30, [sp], #0x10\n    0x101014b2c <+32>: ret    \n    0x101014b30 <+36>: ret    \nRealtime Voice needs it to talk to you.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Realtime Voice needs it to talk to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -305,7 +305,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RealtimeVoice/Info.plist;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "libsystem_kernel.dylib`__abort_with_payload:\n    0x101014b0c <+0>:  mov    x16, #0x209               ; =521 \n    0x101014b10 <+4>:  svc    #0x80\n->  0x101014b14 <+8>:  b.lo   0x101014b30               ; <+36>\n    0x101014b18 <+12>: stp    x29, x30, [sp, #-0x10]!\n    0x101014b1c <+16>: mov    x29, sp\n    0x101014b20 <+20>: bl     0x1010094dc               ; cerror_nocancel\n    0x101014b24 <+24>: mov    sp, x29\n    0x101014b28 <+28>: ldp    x29, x30, [sp], #0x10\n    0x101014b2c <+32>: ret    \n    0x101014b30 <+36>: ret    \nlibsystem_kernel.dylib`__abort_with_payload:\n    0x101014b0c <+0>:  mov    x16, #0x209               ; =521 \n    0x101014b10 <+4>:  svc    #0x80\n->  0x101014b14 <+8>:  b.lo   0x101014b30               ; <+36>\n    0x101014b18 <+12>: stp    x29, x30, [sp, #-0x10]!\n    0x101014b1c <+16>: mov    x29, sp\n    0x101014b20 <+20>: bl     0x1010094dc               ; cerror_nocancel\n    0x101014b24 <+24>: mov    sp, x29\n    0x101014b28 <+28>: ldp    x29, x30, [sp], #0x10\n    0x101014b2c <+32>: ret    \n    0x101014b30 <+36>: ret    \nRealtime Voice needs it to talk to you.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Realtime Voice needs it to talk to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -74,9 +74,6 @@ final class OAIRealtimeService: NSObject, RealtimeService {
         return stream
     }
 
-    func interrupt() {
-    }
-
     func disconnect() {
         dataChannel?.close()
         dataChannel = nil

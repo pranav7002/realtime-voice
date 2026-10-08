@@ -12,7 +12,5 @@ import Foundation
 protocol RealtimeService: AnyObject {
     func connect() async throws -> AsyncStream<RealtimeEvent>
     
-    func interrupt()
-    
     func disconnect()
 }

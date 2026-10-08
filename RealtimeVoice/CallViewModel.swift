@@ -43,10 +43,6 @@ final class CallViewModel {
         phase = .idle
     }
     
-    func interrupt() {
-        service.interrupt()
-    }
-    
     private var isFailed: Bool {
         if case .failed = phase { return true }
         return false
