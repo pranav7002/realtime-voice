@@ -8,5 +8,5 @@
 import Foundation
 
 enum AppConfig {
-    static let serverURL = URL(string: "https://voice-server-l411.onrender.com")!
+    static let serverURL = URL(string: "http://localhost:8080")!
 }

@@ -97,13 +97,18 @@ final class CallViewModel {
             
         case .assistantDone:
             assistantMessageID = nil
-            phase = .idle
+            if phase == .assistantSpeaking {
+                phase = .listening
+            }
             
         case .assistantInterrupted:
-            appendAssistantText("...")
+            if assistantMessageID != nil {
+                appendAssistantText("…")
+            }
             assistantMessageID = nil
-            phase = .listening
-            
+            if phase == .assistantSpeaking {
+                phase = .listening
+            }
         case .failed(let error):
             phase = .failed(error)
         }

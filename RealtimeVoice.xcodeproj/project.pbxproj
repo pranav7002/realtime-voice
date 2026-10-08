@@ -6,13 +6,30 @@
 	objectVersion = 110;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CD005A0B3076CCF900665604 /* WebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = CD005A0A3076CCF900665604 /* WebRTC */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CD0059E530752FEF00665604 /* RealtimeVoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealtimeVoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CD005A083076CA5200665604 /* Exceptions for "RealtimeVoice" folder in "RealtimeVoice" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CD0059E430752FEF00665604 /* RealtimeVoice */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CD0059E730752FEF00665604 /* RealtimeVoice */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CD005A083076CA5200665604 /* Exceptions for "RealtimeVoice" folder in "RealtimeVoice" target */,
+			);
 			path = RealtimeVoice;
 			sourceTree = "<group>";
 		};
@@ -22,6 +39,7 @@
 		CD0059E230752FEF00665604 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				CD005A0B3076CCF900665604 /* WebRTC in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -60,6 +78,9 @@
 				CD0059E730752FEF00665604 /* RealtimeVoice */,
 			);
 			name = RealtimeVoice;
+			packageProductDependencies = (
+				CD005A0A3076CCF900665604 /* WebRTC */,
+			);
 			productName = RealtimeVoice;
 			productReference = CD0059E530752FEF00665604 /* RealtimeVoice.app */;
 			productType = "com.apple.product-type.application";
@@ -88,6 +109,9 @@
 			);
 			mainGroup = CD0059DC30752FEF00665604;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CD005A093076CCF900665604 /* XCRemoteSwiftPackageReference "WebRTC" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CD0059E630752FEF00665604 /* Products */;
 			projectDirPath = "";
@@ -246,6 +270,8 @@
 				DEVELOPMENT_TEAM = 3XR26MB869;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RealtimeVoice/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "libsystem_kernel.dylib`__abort_with_payload:\n    0x101014b0c <+0>:  mov    x16, #0x209               ; =521 \n    0x101014b10 <+4>:  svc    #0x80\n->  0x101014b14 <+8>:  b.lo   0x101014b30               ; <+36>\n    0x101014b18 <+12>: stp    x29, x30, [sp, #-0x10]!\n    0x101014b1c <+16>: mov    x29, sp\n    0x101014b20 <+20>: bl     0x1010094dc               ; cerror_nocancel\n    0x101014b24 <+24>: mov    sp, x29\n    0x101014b28 <+28>: ldp    x29, x30, [sp], #0x10\n    0x101014b2c <+32>: ret    \n    0x101014b30 <+36>: ret    \nlibsystem_kernel.dylib`__abort_with_payload:\n    0x101014b0c <+0>:  mov    x16, #0x209               ; =521 \n    0x101014b10 <+4>:  svc    #0x80\n->  0x101014b14 <+8>:  b.lo   0x101014b30               ; <+36>\n    0x101014b18 <+12>: stp    x29, x30, [sp, #-0x10]!\n    0x101014b1c <+16>: mov    x29, sp\n    0x101014b20 <+20>: bl     0x1010094dc               ; cerror_nocancel\n    0x101014b24 <+24>: mov    sp, x29\n    0x101014b28 <+28>: ldp    x29, x30, [sp], #0x10\n    0x101014b2c <+32>: ret    \n    0x101014b30 <+36>: ret    \nRealtime Voice needs it to talk to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -278,6 +304,8 @@
 				DEVELOPMENT_TEAM = 3XR26MB869;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RealtimeVoice/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "libsystem_kernel.dylib`__abort_with_payload:\n    0x101014b0c <+0>:  mov    x16, #0x209               ; =521 \n    0x101014b10 <+4>:  svc    #0x80\n->  0x101014b14 <+8>:  b.lo   0x101014b30               ; <+36>\n    0x101014b18 <+12>: stp    x29, x30, [sp, #-0x10]!\n    0x101014b1c <+16>: mov    x29, sp\n    0x101014b20 <+20>: bl     0x1010094dc               ; cerror_nocancel\n    0x101014b24 <+24>: mov    sp, x29\n    0x101014b28 <+28>: ldp    x29, x30, [sp], #0x10\n    0x101014b2c <+32>: ret    \n    0x101014b30 <+36>: ret    \nlibsystem_kernel.dylib`__abort_with_payload:\n    0x101014b0c <+0>:  mov    x16, #0x209               ; =521 \n    0x101014b10 <+4>:  svc    #0x80\n->  0x101014b14 <+8>:  b.lo   0x101014b30               ; <+36>\n    0x101014b18 <+12>: stp    x29, x30, [sp, #-0x10]!\n    0x101014b1c <+16>: mov    x29, sp\n    0x101014b20 <+20>: bl     0x1010094dc               ; cerror_nocancel\n    0x101014b24 <+24>: mov    sp, x29\n    0x101014b28 <+28>: ldp    x29, x30, [sp], #0x10\n    0x101014b2c <+32>: ret    \n    0x101014b30 <+36>: ret    \nRealtime Voice needs it to talk to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -320,6 +348,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD005A093076CCF900665604 /* XCRemoteSwiftPackageReference "WebRTC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stasel/WebRTC.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 154.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CD005A0A3076CCF900665604 /* WebRTC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD005A093076CCF900665604 /* XCRemoteSwiftPackageReference "WebRTC" */;
+			productName = WebRTC;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CD0059DD30752FEF00665604 /* Project object */;
 	validationLevel = 1;
