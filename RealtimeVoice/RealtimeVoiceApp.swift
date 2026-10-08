@@ -18,11 +18,7 @@ struct RealtimeVoiceApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(
-                model: CallViewModel(
-                    service: OAIRealtimeService(
-                        tokenProvider: ServerTokenProvider(baseURL: AppConfig.serverURL)
-                    )
-                )
+                model: model
             )
         }
     }
